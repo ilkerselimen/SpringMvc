@@ -15,7 +15,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override // DB'ye erisim icin gerekli config ayarlarini iceren bir class tanimlayacagiz.
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[0];
+        return new Class[]{
+                RootContextConfig.class
+        };
     }
 
     @Override // Controller, Handler Mapping, View Resolver ile ilgili config ayarlarini iceren bir class tanimlayacagiz.
