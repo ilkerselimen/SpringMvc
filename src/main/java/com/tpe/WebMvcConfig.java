@@ -24,6 +24,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     //css,image statik olan kaynakların dispatchera gönderilmesine gerek yok
+    //ex:http://localhost:8080/SpringMVC/resources/css/style.css
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").//bu pathdeki kaynakları statik olarak sun
