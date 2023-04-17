@@ -18,14 +18,14 @@ public class RootContextConfig {
     @Autowired
     private Environment environment;
 
-    // hibernatele DB iletisimi icin session objesine ihtiyacimiz var
+    //hibernatele DB iletişimi için session objesine ihtiyacımız var
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource()); // jdbc icin gerekli property, ASSAGIDAKI METHODDAN GELEN OBJECTI KULLANDIK.
-        sessionFactory.setHibernateProperties(hibernateProperties()); // hibernate icin gerekli properties, ASSAGIDAKI METHODDAN GELEN OBJECTI KULLANDIK.
-        sessionFactory.setPackagesToScan(new String[]{"com.tpe.domain"}); // entity classlarinin package ini belirttik.
-        return sessionFactory;
+        LocalSessionFactoryBean sessionFactory=new LocalSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource());//jdbc için gerekli property
+        sessionFactory.setHibernateProperties(hibernateProperties());//hibernate için gerekli propertyler
+        sessionFactory.setPackagesToScan(new String[]{"com.tpe.domain"});//entity classlarının package
+        return  sessionFactory;
     }
 
     private Properties hibernateProperties(){
@@ -38,7 +38,7 @@ public class RootContextConfig {
     }
 
     private DataSource dataSource(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        DriverManagerDataSource dataSource=new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));

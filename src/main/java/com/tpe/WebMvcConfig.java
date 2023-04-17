@@ -10,27 +10,24 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan("com.tpe") // optional
-@EnableWebMvc // MVC icin config etkinlestirmek icin
+@ComponentScan("com.tpe")//opsiyonel
+@EnableWebMvc//MVC için config etkinleştirmek
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Bean// view name e karsilik gelen view dosyasinin cozumlenmesini: viewResolver
+    @Bean//view name e karşılık gelen view dosyasının çözümlenmesi:viewresolver
     public InternalResourceViewResolver resolver(){
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setViewClass(JstlView.class); // JavaStandardTagLibrary: JSP dosyalari icinde daha az kod yazmamizi saglar.
-        resolver.setPrefix("/WEB-INF/views/"); // view dosyalari nerede ? (dizin)
-        resolver.setSuffix(".jsp"); // view dosyalarinin uzantisi
-        return resolver();
+        InternalResourceViewResolver resolver=new InternalResourceViewResolver();
+        resolver.setViewClass(JstlView.class);//JavaStandartTagLibrary:JSP dosyaları içinde daha az kod yazmamızı sağlar
+        resolver.setPrefix("/WEB-INF/views/");//view dosyaları nerde(dizin)
+        resolver.setSuffix(".jsp");//view dosyalarının uzantısı
+        return resolver;
     }
 
-    // css, image static olan kaynaklarin dispatchera gonderilmesine gerek yok
-
+    //css,image statik olan kaynakların dispatchera gönderilmesine gerek yok
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**"). // bu pathdeki kaynaklari static olarak sun.
-                 addResourceLocations("/resources/"). // kaynaklarin yeri
-                 setCachePeriod(0); // cacheleme icin belirli bir period suresi verilebilir.
+        registry.addResourceHandler("/resources/**").//bu pathdeki kaynakları statik olarak sun
+                addResourceLocations("/resources/").//kaynakların yeri
+                setCachePeriod(0);//cacheleme için belirli bir periyod süresi verilebilir.
     }
-
-
 }
