@@ -13,8 +13,8 @@ public class StudentController {
 
     //controllerdan requeste göre geriye ModelAndView(data+view name) veya
     //String tipinde view name döndürülür.
-
-    @GetMapping
+        //@RequestMapping("/students/hi")
+    @GetMapping("/hi")
     public ModelAndView sayHi(){
         ModelAndView mav=new ModelAndView();
         mav.addObject("message","Hi; ");
